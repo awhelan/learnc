@@ -26,13 +26,13 @@ void printList(struct Node *node) {
 
 /* Given a node prev_node, insert a new node after the given
    prev_node */
-void insert(struct Node* prev_node, int new_data)
+struct Node* insert(struct Node* prev_node, int new_data)
 {
 	/* 1. check if the given prev_node is NULL */
 	if (prev_node == NULL)
 	{
 		printf("the given previous node cannot be NULL");
-		return;
+		return NULL;
 	}
 
 	/* 2. allocate new node */
@@ -46,6 +46,7 @@ void insert(struct Node* prev_node, int new_data)
 
 	/* 5. move the next of prev_node as new_node */
 	prev_node->next = new_node;
+	return new_node;
 }
 
 int main() {
@@ -59,19 +60,14 @@ int main() {
 	head->next = NULL;
 
 	// Insert second
-	insert(head, 30);
+	struct Node* second = insert(head, 30);
 
 	// Insert third
-	struct Node* second = head->next;
-	insert(second, 32);
+	struct Node* third = insert(second, 32);
 
-	struct Node* third = second->next;
-	insert(third, 45);
+	struct Node* fourth = insert(third, 45);
+	struct Node* fifth = insert(fourth, 49);
 
-	struct Node* fourth = third->next;
-	insert(fourth, 49);
-
-	struct Node* fifth = fourth->next;
 	insert(fifth, 700);
 
 	printList(head);

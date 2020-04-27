@@ -11,11 +11,6 @@ struct Node {
 	struct Node* next;
 };
 
-struct LinkedList {
-	struct Node* first;
-	struct Node* last;
-};
-
 void printList(struct Node *node) {
 	printf("Contents of the list: \n");
 	while(node != NULL){
@@ -24,22 +19,33 @@ void printList(struct Node *node) {
 	}
 }
 
-// Add a new item after the given node. 
-void insert(struct Node** node, int value) {
-	struct Node* new = NULL;
-}
+// Add a new item to the end of our linked list. 
+//function append(struct Node** node, int value) {
+//}
 
-// Add a new item at the very end of the list.
-void append(struct Node** node, int value)
+
+/* Given a node prev_node, insert a new node after the given
+   prev_node */
+void insert(struct Node* prev_node, int new_data)
 {
-	
-	while(true) {	}
+    /* 1. check if the given prev_node is NULL */
+    if (prev_node == NULL)
+    {
+        printf("the given previous node cannot be NULL");
+        return;
+    }
 
-}
+    /* 2. allocate new node */
+    struct Node* new_node =(struct Node*) malloc(sizeof(struct Node));
 
-struct Node** last(struct Node** node)
-{
+    /* 3. put in the data  */
+    new_node->data  = new_data;
 
+    /* 4. Make next of new node as next of prev_node */
+    new_node->next = prev_node->next;
+
+    /* 5. move the next of prev_node as new_node */
+    prev_node->next = new_node;
 }
 
 int main() {
@@ -71,6 +77,7 @@ int main() {
 	fourth->data = 49;
 	fourth->next = NULL;
 
+    insert(second, 543);
 	printList(head);
 
 	return 0;

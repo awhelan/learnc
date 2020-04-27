@@ -7,7 +7,7 @@
 
 // Creating a data structure called Node = a single node in the list.
 struct Node {
-	int data; 
+	int data;
 	struct Node* next;
 };
 
@@ -28,24 +28,24 @@ void printList(struct Node *node) {
    prev_node */
 void insert(struct Node* prev_node, int new_data)
 {
-    /* 1. check if the given prev_node is NULL */
-    if (prev_node == NULL)
-    {
-        printf("the given previous node cannot be NULL");
-        return;
-    }
+	/* 1. check if the given prev_node is NULL */
+	if (prev_node == NULL)
+	{
+		printf("the given previous node cannot be NULL");
+		return;
+	}
 
-    /* 2. allocate new node */
-    struct Node* new_node =(struct Node*) malloc(sizeof(struct Node));
+	/* 2. allocate new node */
+	struct Node* new_node =(struct Node*) malloc(sizeof(struct Node));
 
-    /* 3. put in the data  */
-    new_node->data  = new_data;
+	/* 3. put in the data  */
+	new_node->data  = new_data;
 
-    /* 4. Make next of new node as next of prev_node */
-    new_node->next = prev_node->next;
+	/* 4. Make next of new node as next of prev_node */
+	new_node->next = prev_node->next;
 
-    /* 5. move the next of prev_node as new_node */
-    prev_node->next = new_node;
+	/* 5. move the next of prev_node as new_node */
+	prev_node->next = new_node;
 }
 
 int main() {
@@ -65,14 +65,14 @@ int main() {
 	struct Node* second = head->next;
 	insert(second, 32);
 
-    struct Node* third = second->next;
-    insert(third, 45);
+	struct Node* third = second->next;
+	insert(third, 45);
 
-    struct Node* fourth = third->next;
-    insert(fourth, 49);
+	struct Node* fourth = third->next;
+	insert(fourth, 49);
 
-    struct Node* fifth = fourth->next;
-    insert(fifth, 700);
+	struct Node* fifth = fourth->next;
+	insert(fifth, 700);
 
 	printList(head);
 

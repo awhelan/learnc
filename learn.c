@@ -51,33 +51,29 @@ void insert(struct Node* prev_node, int new_data)
 int main() {
 	// Declare 3 nodes in our linked list.
 	struct Node* head = NULL;
-	struct Node* second = NULL;
-	struct Node* third = NULL;
-	struct Node* fourth = NULL;
 
 	// Allocate memory in C for our 3 nodes. 
 	head = (struct Node*)malloc(sizeof(struct Node));
-	second = (struct Node*)malloc(sizeof(struct Node));
-	third = (struct Node*)malloc(sizeof(struct Node));
-	fourth = (struct Node*)malloc(sizeof(struct Node));
-
-	// Set the value of the first item in the list. 
+	// Set the value of the first item in the list.
 	head->data = 25;
-	head->next = second;
+	head->next = NULL;
 
-	// Set the value of the second item in the list. 
-	second->data = 32;
-	second->next = third;
+	// Insert second
+	insert(head, 30);
 
-	// Set the value of the third item. 
-	third->data = 45;
-	third->next = fourth;
+	// Insert third
+	struct Node* second = head->next;
+	insert(second, 32);
 
-	// 4th. 
-	fourth->data = 49;
-	fourth->next = NULL;
+    struct Node* third = second->next;
+    insert(third, 45);
 
-    insert(second, 543);
+    struct Node* fourth = third->next;
+    insert(fourth, 49);
+
+    struct Node* fifth = fourth->next;
+    insert(fifth, 700);
+
 	printList(head);
 
 	return 0;
